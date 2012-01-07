@@ -1,0 +1,14 @@
+TooConsole
+===============================================================================
+Is a open source project for transferring Console logs from an iDevice to another.
+It can be used during development, for example analyzing logs of a released iPhone app
+using an iPad as a screen to read them.
+
+Objectives of TooConsole
+===============================================================================
+
+simplify reading of logs
+
+Depentencies
+-------------------------------------------------------------------------------
+project "toocastkit" https://github.com/ohdonpiano/toocastkit
