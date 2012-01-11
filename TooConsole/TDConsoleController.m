@@ -11,16 +11,7 @@
 
 @implementation TDConsoleController
 
-@synthesize logs=_logs, filteredLogs=_filteredLogs, service=_service;
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize tableView=_tableView, logs=_logs, filteredLogs=_filteredLogs, service=_service;
 
 - (void)didReceiveMemoryWarning
 {
@@ -46,10 +37,12 @@
 
 - (void) reload {
     [self.tableView reloadData];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[_logs count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 - (void)viewDidUnload
 {
+    _tableView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -123,9 +116,23 @@
     }
     
     cell.textLabel.text = [log objectForKey:@"message"];
+    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.textLabel.numberOfLines = 0;
     cell.detailTextLabel.text = [log objectForKey:@"peerName"];
     
     return cell;
+}
+
+- (CGFloat) tableView: (UITableView *) tableView heightForRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    // Use the method that you would have created above to get the cell.
+    // Any other method seems to result in infinite recursion like you said.
+    UITableViewCell *cell = (UITableViewCell*)[self tableView:tableView cellForRowAtIndexPath:indexPath];
+	
+	NSString *text = cell.textLabel.text;
+	CGFloat height = [text sizeWithFont:cell.textLabel.font constrainedToSize:CGSizeMake(cell.bounds.size.width,1000) lineBreakMode:UILineBreakModeWordWrap].height;
+	//return MAX(height, MinHeight);
+	return height+30; 
 }
 
 #pragma mark - TDMulticast Receive

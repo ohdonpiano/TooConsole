@@ -25,6 +25,7 @@
 		CE610C1714B89A55006EA94E /* ASLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610C1114B89A55006EA94E /* ASLogger.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CE610C1814B89A55006EA94E /* ASLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610C1314B89A55006EA94E /* ASLQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CE610C1914B89A55006EA94E /* ASLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610C1514B89A55006EA94E /* ASLResponse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE6273EF14BD78AA00197538 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6273EE14BD78AA00197538 /* MainStoryboard_iPad.storyboard */; };
 		CECD761114B9A45800456405 /* b64.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD760814B9A45800456405 /* b64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CECD761214B9A45800456405 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD760A14B9A45800456405 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CECD761314B9A45800456405 /* NSError+CFStreamError.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD760C14B9A45800456405 /* NSError+CFStreamError.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -66,6 +67,7 @@
 		CE610C1314B89A55006EA94E /* ASLQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASLQuery.m; sourceTree = "<group>"; };
 		CE610C1414B89A55006EA94E /* ASLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASLResponse.h; sourceTree = "<group>"; };
 		CE610C1514B89A55006EA94E /* ASLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASLResponse.m; sourceTree = "<group>"; };
+		CE6273EE14BD78AA00197538 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		CECD760714B9A45800456405 /* b64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b64.h; sourceTree = "<group>"; };
 		CECD760814B9A45800456405 /* b64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = b64.m; sourceTree = "<group>"; };
 		CECD760914B9A45800456405 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				CE610BCE14B84ACD006EA94E /* MainStoryboard.storyboard */,
+				CE6273EE14BD78AA00197538 /* MainStoryboard_iPad.storyboard */,
 				CE610BC414B84ACD006EA94E /* TooConsole-Info.plist */,
 				CE610BC514B84ACD006EA94E /* InfoPlist.strings */,
 				CE610BC814B84ACD006EA94E /* main.m */,
@@ -252,6 +255,7 @@
 			files = (
 				CE610BC714B84ACD006EA94E /* InfoPlist.strings in Resources */,
 				CE610BD014B84ACD006EA94E /* MainStoryboard.storyboard in Resources */,
+				CE6273EF14BD78AA00197538 /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +330,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -345,6 +350,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -356,6 +362,7 @@
 				GCC_PREFIX_HEADER = "TooConsole/TooConsole-Prefix.pch";
 				INFOPLIST_FILE = "TooConsole/TooConsole-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -367,6 +374,7 @@
 				GCC_PREFIX_HEADER = "TooConsole/TooConsole-Prefix.pch";
 				INFOPLIST_FILE = "TooConsole/TooConsole-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

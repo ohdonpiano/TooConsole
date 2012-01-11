@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TDConsoleController : UITableViewController {
+@interface TDConsoleController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+    
+    UITableView *_tableView;
     
     NSMutableArray *_logs;
     NSMutableArray *_filteredLogs;
     
     NSString *_service; 
 }
+
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 @property (nonatomic, retain) NSMutableArray *logs;
 @property (nonatomic, retain) NSMutableArray *filteredLogs;
