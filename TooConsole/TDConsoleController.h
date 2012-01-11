@@ -11,8 +11,13 @@
 @interface TDConsoleController : UITableViewController {
     
     NSMutableArray *_logs;
+    NSMutableArray *_filteredLogs;
+    
+    NSString *_service; 
 }
 
 @property (nonatomic, retain) NSMutableArray *logs;
+@property (nonatomic, retain) NSMutableArray *filteredLogs;
+@property (nonatomic, retain) NSString *service; 
 
 @end

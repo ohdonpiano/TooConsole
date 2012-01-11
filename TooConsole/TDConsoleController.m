@@ -7,9 +7,11 @@
 //
 
 #import "TDConsoleController.h"
-
+#import "TDMulticast.h"
 
 @implementation TDConsoleController
+
+@synthesize logs=_logs, filteredLogs=_filteredLogs, service=_service;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,11 +36,16 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.logs = [[NSMutableArray alloc] init];
+    self.filteredLogs = [[NSMutableArray alloc] init];
+    
+    // Refresh button
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStyleBordered target:self action:@selector(reload)];
+    self.navigationItem.rightBarButtonItem = right;
+}
+
+- (void) reload {
+    [self.tableView reloadData];
 }
 
 - (void)viewDidUnload
@@ -51,21 +58,21 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receive:) name:kTDMulticastDidReceiveElement object:nil];
+    
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.tableView reloadData];
+    });
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -85,7 +92,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_logs count];
+    if (tableView == self.tableView)
+        return [_logs count];
+    else if (tableView == self.searchDisplayController.searchResultsTableView)
+        return [_filteredLogs count];
+    else
+        return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,59 +111,52 @@
     
     // Configure the cell...
     
+    NSDictionary *log = nil;
+    
+    if (tableView == self.tableView) {
+        
+        log = [_logs objectAtIndex:indexPath.row];
+        
+    } else if (tableView == self.searchDisplayController.searchResultsTableView) {
+        
+        log = [_filteredLogs objectAtIndex:indexPath.row];
+    }
+    
+    cell.textLabel.text = [log objectForKey:@"message"];
+    cell.detailTextLabel.text = [log objectForKey:@"peerName"];
+    
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+#pragma mark - TDMulticast Receive
+
+- (void) receive:(NSNotification*)notif {
+    
+    @try {
+        NSDictionary *message = notif.object;
+        NSDictionary *peer = notif.userInfo;
+        
+        NSDictionary *log = [NSDictionary dictionaryWithObjectsAndKeys:[message objectForKey:@"message"],@"message",[peer objectForKey:@"peerName"],@"peerName", nil];
+        
+        [self.logs addObject:log];
+    } @catch (NSException* ex) {
+        // IGNORE
+    }
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+#pragma mark - UISearchDisplayController Delegate
+
+- (void) filterLogsWithText:(NSString*)text {
+    
+    [_filteredLogs removeAllObjects];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"message contains[cd] %@",text];
+    NSArray *filtered = [_logs filteredArrayUsingPredicate:predicate];
+    NSLog(@"%s found %i logs matching", __PRETTY_FUNCTION__, [filtered count]);
+    [_filteredLogs addObjectsFromArray:filtered];
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)aSearchText {
+    [self filterLogsWithText:aSearchText];
 }
 
 @end

@@ -8,8 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TDAppDelegate : UIResponder <UIApplicationDelegate>
+#define kServiceName @"TooConsoleService"
+#define kServicePort 11223
+
+@interface TDAppDelegate : UIResponder <UIApplicationDelegate> {
+    
+    /**
+     *	@brief	the FIFO queue on which the logs will be sent to other iDevices connected
+     */
+    dispatch_queue_t announceQueue;
+    
+    UIBackgroundTaskIdentifier uploadJobTask;
+    
+    BOOL interrupted;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+
+- (void) announceLogs;
+- (void) concealLogs;
 
 @end

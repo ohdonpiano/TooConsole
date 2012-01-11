@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TDAnnounceController : UIViewController
+@interface TDAnnounceController : UIViewController <UINavigationControllerDelegate> {
+    
+    BOOL viewDidDisappear;
+    
+}
 
 @end

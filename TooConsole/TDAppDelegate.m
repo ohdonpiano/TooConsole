@@ -7,14 +7,62 @@
 //
 
 #import "TDAppDelegate.h"
+#import "TDMulticast.h"
+#import "ASLogger.h"
 
 @implementation TDAppDelegate
 
 @synthesize window = _window;
 
+- (void) announceLogs {
+    
+    interrupted = NO;
+    
+    uploadJobTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        
+        [[UIApplication sharedApplication] endBackgroundTask:uploadJobTask];
+        uploadJobTask = UIBackgroundTaskInvalid;
+    }];
+    
+    dispatch_async(announceQueue, ^{
+        @autoreleasepool {
+            
+            while (!interrupted) {
+                                                
+//                NSLog(@"log: %i",0);
+                
+                ASLQuery *query = [[ASLQuery alloc] init];
+                
+                ASLResponse *response = [[ASLogger defaultLogger] search:query];
+                ASLMessage *mex = nil;
+                while ((mex = [response next]) != nil) {
+                    
+                    NSDictionary *message = [NSDictionary dictionaryWithObjectsAndKeys:mex.message,@"message",mex.time,@"time", nil];
+                    
+                    [[TDMulticast sharedInstance] sendDictionary:message];
+                }
+                
+                if (interrupted)
+                    return;
+                
+                [NSThread sleepForTimeInterval:2.0];
+                
+            }
+        } 
+    });
+}
+
+- (void) concealLogs {
+    interrupted = YES;
+    [[UIApplication sharedApplication] endBackgroundTask:uploadJobTask];
+    uploadJobTask = UIBackgroundTaskInvalid;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    announceQueue = dispatch_queue_create("tooconsole.announce", NULL);
+    
     return YES;
 }
 							

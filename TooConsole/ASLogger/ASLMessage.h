@@ -50,7 +50,7 @@
 // standard message key accessors
 // readonly properties are those set by the server, and are only valid when receiver is the 
 //  result of an ASL query.
-@property (nonatomic, readonly) NSDate * time;			// "Time" for KVC
+@property (nonatomic, readonly) NSDate * time;		// "Time" for KVC
 @property (nonatomic, readonly) NSHost * host;		// "Host"
 @property (nonatomic, copy) NSString * sender;		// "Sender"
 @property (nonatomic, copy) NSString * facility;	// "Facility"

@@ -7,7 +7,10 @@
 //
 
 #import "TDAnnounceController.h"
+#import "TDAppDelegate.h"
+#import "TDLauncherController.h"
 #import "TDMulticast.h"
+#import "ASLogger.h"
 
 @implementation TDAnnounceController
 
@@ -30,6 +33,8 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
 }
 
 - (void)viewDidUnload
@@ -43,7 +48,11 @@
 {
     [super viewWillAppear:animated];
     
-    [[TDMulticast sharedInstance] announce];
+    self.navigationController.delegate = self;
+    
+    [[TDMulticast sharedInstance] announceWithName:[[UIDevice currentDevice] name] port:kServicePort];
+    
+    [(TDAppDelegate*)[[UIApplication sharedApplication] delegate] announceLogs];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -59,12 +68,26 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    
+    self.navigationController.delegate = nil;
+    
+    viewDidDisappear = YES;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - UINavigationControllerDelegate
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
+    if ([viewController isKindOfClass:[TDLauncherController class]]) {
+        [[TDMulticast sharedInstance] concealWithName:kServiceName];
+        [(TDAppDelegate*)[[UIApplication sharedApplication] delegate] concealLogs];
+    }
 }
 
 @end

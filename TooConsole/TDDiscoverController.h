@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TDDiscoverController : UITableViewController
+@class NSNetService;
+
+@interface TDDiscoverController : UITableViewController {
+    
+    NSNetService *currentService;
+}
 
 @end

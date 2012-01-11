@@ -16,10 +16,20 @@
 		CE610BD014B84ACD006EA94E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE610BCE14B84ACD006EA94E /* MainStoryboard.storyboard */; };
 		CE610BD314B84ACD006EA94E /* TDLauncherController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610BD214B84ACD006EA94E /* TDLauncherController.m */; };
 		CE610BE314B85CAE006EA94E /* TDMulticast.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610BE214B85CAE006EA94E /* TDMulticast.m */; };
-		CE610BF314B860CB006EA94E /* TCPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610BF214B860CB006EA94E /* TCPServer.m */; };
+		CE610BF314B860CB006EA94E /* TCPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610BF214B860CB006EA94E /* TCPServer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CE610BF514B86180006EA94E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE610BF414B86180006EA94E /* CFNetwork.framework */; };
 		CE610BF814B87F21006EA94E /* TDAnnounceController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610BF714B87F21006EA94E /* TDAnnounceController.m */; };
 		CE610BFB14B87F37006EA94E /* TDDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610BFA14B87F37006EA94E /* TDDiscoverController.m */; };
+		CE610BFF14B898D8006EA94E /* TDConsoleController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610BFE14B898D8006EA94E /* TDConsoleController.m */; };
+		CE610C1614B89A55006EA94E /* ASLMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610C0F14B89A55006EA94E /* ASLMessage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE610C1714B89A55006EA94E /* ASLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610C1114B89A55006EA94E /* ASLogger.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE610C1814B89A55006EA94E /* ASLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610C1314B89A55006EA94E /* ASLQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CE610C1914B89A55006EA94E /* ASLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CE610C1514B89A55006EA94E /* ASLResponse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CECD761114B9A45800456405 /* b64.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD760814B9A45800456405 /* b64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CECD761214B9A45800456405 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD760A14B9A45800456405 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CECD761314B9A45800456405 /* NSError+CFStreamError.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD760C14B9A45800456405 /* NSError+CFStreamError.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CECD761414B9A45800456405 /* NSObject+Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD760E14B9A45800456405 /* NSObject+Properties.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CECD761514B9A45800456405 /* NSString+PropertyKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CECD761014B9A45800456405 /* NSString+PropertyKVC.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +56,26 @@
 		CE610BF914B87F37006EA94E /* TDDiscoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDDiscoverController.h; sourceTree = "<group>"; };
 		CE610BFA14B87F37006EA94E /* TDDiscoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDDiscoverController.m; sourceTree = "<group>"; };
 		CE610BFC14B88AEE006EA94E /* TDMulticastConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDMulticastConfig.h; sourceTree = "<group>"; };
+		CE610BFD14B898D8006EA94E /* TDConsoleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDConsoleController.h; sourceTree = "<group>"; };
+		CE610BFE14B898D8006EA94E /* TDConsoleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDConsoleController.m; sourceTree = "<group>"; };
+		CE610C0E14B89A55006EA94E /* ASLMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASLMessage.h; sourceTree = "<group>"; };
+		CE610C0F14B89A55006EA94E /* ASLMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASLMessage.m; sourceTree = "<group>"; };
+		CE610C1014B89A55006EA94E /* ASLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASLogger.h; sourceTree = "<group>"; };
+		CE610C1114B89A55006EA94E /* ASLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASLogger.m; sourceTree = "<group>"; };
+		CE610C1214B89A55006EA94E /* ASLQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASLQuery.h; sourceTree = "<group>"; };
+		CE610C1314B89A55006EA94E /* ASLQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASLQuery.m; sourceTree = "<group>"; };
+		CE610C1414B89A55006EA94E /* ASLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASLResponse.h; sourceTree = "<group>"; };
+		CE610C1514B89A55006EA94E /* ASLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASLResponse.m; sourceTree = "<group>"; };
+		CECD760714B9A45800456405 /* b64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b64.h; sourceTree = "<group>"; };
+		CECD760814B9A45800456405 /* b64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = b64.m; sourceTree = "<group>"; };
+		CECD760914B9A45800456405 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		CECD760A14B9A45800456405 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		CECD760B14B9A45800456405 /* NSError+CFStreamError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+CFStreamError.h"; sourceTree = "<group>"; };
+		CECD760C14B9A45800456405 /* NSError+CFStreamError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+CFStreamError.m"; sourceTree = "<group>"; };
+		CECD760D14B9A45800456405 /* NSObject+Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Properties.h"; sourceTree = "<group>"; };
+		CECD760E14B9A45800456405 /* NSObject+Properties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Properties.m"; sourceTree = "<group>"; };
+		CECD760F14B9A45800456405 /* NSString+PropertyKVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PropertyKVC.h"; sourceTree = "<group>"; };
+		CECD761014B9A45800456405 /* NSString+PropertyKVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PropertyKVC.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +124,7 @@
 		CE610BC214B84ACD006EA94E /* TooConsole */ = {
 			isa = PBXGroup;
 			children = (
+				CE610C0D14B89A55006EA94E /* ASLogger */,
 				CE610BE014B85CAE006EA94E /* toocastkit */,
 				CE610BCB14B84ACD006EA94E /* TDAppDelegate.h */,
 				CE610BCC14B84ACD006EA94E /* TDAppDelegate.m */,
@@ -103,6 +134,8 @@
 				CE610BF714B87F21006EA94E /* TDAnnounceController.m */,
 				CE610BF914B87F37006EA94E /* TDDiscoverController.h */,
 				CE610BFA14B87F37006EA94E /* TDDiscoverController.m */,
+				CE610BFD14B898D8006EA94E /* TDConsoleController.h */,
+				CE610BFE14B898D8006EA94E /* TDConsoleController.m */,
 				CE610BC314B84ACD006EA94E /* Supporting Files */,
 			);
 			path = TooConsole;
@@ -131,6 +164,39 @@
 			);
 			name = toocastkit;
 			path = ../../toocastkit;
+			sourceTree = "<group>";
+		};
+		CE610C0D14B89A55006EA94E /* ASLogger */ = {
+			isa = PBXGroup;
+			children = (
+				CECD760614B9A45800456405 /* Extensions */,
+				CE610C0E14B89A55006EA94E /* ASLMessage.h */,
+				CE610C0F14B89A55006EA94E /* ASLMessage.m */,
+				CE610C1014B89A55006EA94E /* ASLogger.h */,
+				CE610C1114B89A55006EA94E /* ASLogger.m */,
+				CE610C1214B89A55006EA94E /* ASLQuery.h */,
+				CE610C1314B89A55006EA94E /* ASLQuery.m */,
+				CE610C1414B89A55006EA94E /* ASLResponse.h */,
+				CE610C1514B89A55006EA94E /* ASLResponse.m */,
+			);
+			path = ASLogger;
+			sourceTree = "<group>";
+		};
+		CECD760614B9A45800456405 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CECD760714B9A45800456405 /* b64.h */,
+				CECD760814B9A45800456405 /* b64.m */,
+				CECD760914B9A45800456405 /* NSData+Base64.h */,
+				CECD760A14B9A45800456405 /* NSData+Base64.m */,
+				CECD760B14B9A45800456405 /* NSError+CFStreamError.h */,
+				CECD760C14B9A45800456405 /* NSError+CFStreamError.m */,
+				CECD760D14B9A45800456405 /* NSObject+Properties.h */,
+				CECD760E14B9A45800456405 /* NSObject+Properties.m */,
+				CECD760F14B9A45800456405 /* NSString+PropertyKVC.h */,
+				CECD761014B9A45800456405 /* NSString+PropertyKVC.m */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +269,16 @@
 				CE610BF314B860CB006EA94E /* TCPServer.m in Sources */,
 				CE610BF814B87F21006EA94E /* TDAnnounceController.m in Sources */,
 				CE610BFB14B87F37006EA94E /* TDDiscoverController.m in Sources */,
+				CE610BFF14B898D8006EA94E /* TDConsoleController.m in Sources */,
+				CE610C1614B89A55006EA94E /* ASLMessage.m in Sources */,
+				CE610C1714B89A55006EA94E /* ASLogger.m in Sources */,
+				CE610C1814B89A55006EA94E /* ASLQuery.m in Sources */,
+				CE610C1914B89A55006EA94E /* ASLResponse.m in Sources */,
+				CECD761114B9A45800456405 /* b64.m in Sources */,
+				CECD761214B9A45800456405 /* NSData+Base64.m in Sources */,
+				CECD761314B9A45800456405 /* NSError+CFStreamError.m in Sources */,
+				CECD761414B9A45800456405 /* NSObject+Properties.m in Sources */,
+				CECD761514B9A45800456405 /* NSString+PropertyKVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +390,7 @@
 				CE610BD814B84ACD006EA94E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

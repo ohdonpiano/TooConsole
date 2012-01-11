@@ -87,6 +87,55 @@
             </objects>
             <point key="canvasLocation" x="661" y="-252"/>
         </scene>
+        <scene sceneID="Cbx-zO-HDN">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OOp-hL-mXI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="dQC-6p-6M9" customClass="TDConsoleController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wr7-IA-9lW">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="W0N-2E-aFT">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="dQC-6p-6M9" id="1nA-3N-7Lp"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ConsoleCell" id="qFT-f4-Dgm">
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dQC-6p-6M9" id="XSu-dL-ncb"/>
+                            <outlet property="delegate" destination="dQC-6p-6M9" id="xSk-7Z-YK4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Console" id="Jpp-N2-oyU"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="gTW-eC-crD" id="uP5-T3-Lel"/>
+                    </connections>
+                </tableViewController>
+                <searchDisplayController id="gTW-eC-crD">
+                    <connections>
+                        <outlet property="delegate" destination="dQC-6p-6M9" id="n3F-Kz-jjy"/>
+                        <outlet property="searchBar" destination="W0N-2E-aFT" id="THV-Hc-t0t"/>
+                        <outlet property="searchContentsController" destination="dQC-6p-6M9" id="UvY-qW-uJM"/>
+                        <outlet property="searchResultsDataSource" destination="dQC-6p-6M9" id="6wM-Gz-iGG"/>
+                        <outlet property="searchResultsDelegate" destination="dQC-6p-6M9" id="NOB-wd-cv2"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1639" y="-29"/>
+        </scene>
         <scene sceneID="LqZ-n8-KH0">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FZA-18-cTe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -96,15 +145,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiscoverCell" id="KrE-Ca-jRQ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiscoverCell" id="KrE-Ca-jRQ">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="dQC-6p-6M9" kind="push" id="5rY-qi-A12"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -159,11 +211,11 @@
         <class className="TDAnnounceController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TDAnnounceController.h"/>
         </class>
+        <class className="TDConsoleController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TDConsoleController.h"/>
+        </class>
         <class className="TDDiscoverController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TDDiscoverController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
         </class>
         <class className="TDLauncherController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TDLauncherController.h"/>
